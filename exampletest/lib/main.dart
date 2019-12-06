@@ -28,8 +28,10 @@ class MyAppState extends State<MyApp> {
     var value;
     try {
       value = await Cognito.initialize();
-      print(value);
+      print("^^^^^^^^^^^^^^^^^valueinitilaize $value");
     } catch (e, trace) {
+      print("^^^^^^^^^^^^^^^^^erroreeeeeeeee $e");
+
       print(e);
       print(trace);
 
@@ -54,6 +56,7 @@ class MyAppState extends State<MyApp> {
     super.initState();
     doLoad();
     Cognito.registerCallback((value) {
+      print("^^^^^^^^^^^^^^^^^value $value");
       if (!mounted) return;
       setState(() {
         userState = value;
